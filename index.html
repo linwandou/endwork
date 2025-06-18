@@ -1,42 +1,101 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>我的個人網站</title>
-  <link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
-<script src="assets/script.js"></script>
-<header>
-  <h1>歡迎來到我的個人網站</h1>
-  <p>打造屬於自己的職涯入口</p>
-</header>
-<div class="button-bar horizontal">
-  <button class="link-button" data-url="https://linwandou.github.io">前往 9x9 乘法表網站</button>
-  <button class="link-button" data-url="https://linwandou.github.io/water.github.io/">前往 Water Puzzle 遊戲</button>
-  <button class="link-button" data-url="https://linwandou.github.io/my-react-app/">前往 計算機及井字遊戲</button>
-</div>
+/* === 全站基本設定 === */
+body {
+  font-family: 'Microsoft JhengHei', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff; /* 主背景改回白色 */
+  color: #000;
+}
 
+/* === 標頭區域（背景圖片+字體黑邊框） === */
+header {
+  background-image: url('school.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 20px 0;
+}
 
-<section>
-  <h2>👤 關於我</h2>
-  <p>
-    您好，我是 <strong style="color:#4a90e2; font-size: 1.2em;">林冠昀</strong>，目前是位學生，能使用 Python 及 C++ 等語言。
-  </p>
+/* 標題和副標題文字加黑邊框 */
+header h1,
+header p {
+  color: #fff;
+  text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
 
-  <h2>📝 學習心得</h2>
-  <p>在學習 HTML、CSS 和 GitHub Pages 的過程中，我了解了網站的基本結構與部署方式，也學會了如何管理程式碼版本，讓我對網站開發有了初步的掌握。</p>
+/* === 按鈕群組區域（完全一排按鈕，等寬，淺綠漸層背景） === */
+.button-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: #e0f8e9; /* 淺綠色背景 */
+  gap: 10px;
+  flex-wrap: nowrap; /* 禁止換行，確保一排 */
+}
 
-  <h2>📄 履歷資料</h2>
-  <ul>
-    <li><strong>姓名：</strong>林冠昀</li>
-    <li><strong>學號：</strong>5B1G0041</li>
-    <li><strong>學歷：</strong>私立南臺科技大學 資訊工程系</li>
-    <li><strong>技能：</strong>HTML、CSS、GitHub、JavaScript(基礎)、Python、C++</li>
-    <li><strong>專案經驗：</strong>個人網站製作、小遊戲製作</li>
-  </ul>
-</section>
+.button-bar button {
+  flex: 1 1 0; /* 等寬填滿容器 */
+  margin: 0; /* 取消外距，改用 gap 控制間距 */
+  padding: 15px 0;
+  font-size: 16px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  color: #003300;
+  background: linear-gradient(to right, #d4fcdc, #a9e9b0);
+  transition: background 0.3s ease, transform 0.2s;
+  border-radius: 4px;
+}
 
-</body>
-</html>
+.button-bar button:hover {
+  background: linear-gradient(to right, #bff0c8, #8ddfa3);
+  transform: scale(1.03);
+}
+
+/* === 主要內容區塊 === */
+main {
+  padding: 20px;
+}
+
+/* === 夜間模式樣式 === */
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+  background-image: none; /* 移除漸層，改成純色 */
+}
+
+.dark-mode header {
+  background: linear-gradient(to right, #013300, #004400);
+}
+
+.dark-mode .button-bar {
+  background-color: #2a2a2a;
+}
+
+.dark-mode .button-bar button {
+  background: linear-gradient(to right, #444, #222);
+  color: #fff;
+  border: 1px solid #555;
+}
+
+/* === 左至右排版樣式 === */
+.horizontal-layout section {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* 排版切換時，每個主題內的文字變成上下排列（block排列） */
+.horizontal-layout section > * {
+  flex: 1;
+  min-width: 250px;
+  writing-mode: vertical-rl; /* 文字上下閱讀 */
+  text-orientation: mixed;
+}
